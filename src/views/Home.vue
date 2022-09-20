@@ -18,6 +18,7 @@
     <SignUpModal />
     <ResetPasswordModal />
     <LogoutModal />
+    <AccountModal />
   </div>
 </template>
 <script setup>
@@ -32,11 +33,15 @@ import LoginModal from '../components/Home/Modals/Login.vue';
 import SignUpModal from '../components/Home/Modals/SignUp.vue';
 import ResetPasswordModal from '../components/Home/Modals/ResetPassword.vue';
 import LogoutModal from '../components/Home/Modals/Logout.vue';
+import AccountModal from '../components/Home/Modals/Account.vue';
 </script>
 <style lang="scss" scoped>
 .home {
   background: #000;
   height: 100vh;
+  width: 100vw;
+  left: 0;
+  position: fixed;
   overflow: scroll;
   .shadow {
     width: 100vw;
