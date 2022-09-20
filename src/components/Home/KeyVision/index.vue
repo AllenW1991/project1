@@ -222,6 +222,9 @@
       justify-content: space-between;
       height: 6vw;
       z-index: 2;
+      img {
+        width: 2.5vw;
+      }
       .arrowUp {
         transform: scaleY(-1);
       }

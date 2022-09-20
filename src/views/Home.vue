@@ -11,6 +11,8 @@
       <HistoryTable />
     </div>
     <Footer />
+
+    <InitialPopup />
   </div>
 </template>
 <script setup>
@@ -19,6 +21,8 @@ import Footer from '../components/Footer/index.vue';
 
 import KeyVision from '../components/Home/KeyVision/index.vue';
 import HistoryTable from '../components/Home/HistoryTable/index.vue';
+
+import InitialPopup from '../components/Home/Modals/InitialPopup.vue';
 </script>
 <style lang="scss" scoped>
 .home {

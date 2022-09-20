@@ -43,10 +43,17 @@
         <li>GamCare</li>
         <li>Keep It Fun</li>
       </ol>
+      <button type="button" @click="routerChange('home')">GO BACK</button>
     </article>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import router from '../router';
+
+function routerChange(target) {
+  router.push(`/${target}`);
+}
+</script>
 <style lang="scss" scoped>
 .awarePage {
   background: #000;
@@ -56,6 +63,7 @@
   position: fixed;
   top: 0;
   overflow: scroll;
+
   article {
     margin-bottom: 2rem;
     h2 {
@@ -73,8 +81,26 @@
       }
     }
   }
-  article:nth-child(2) {
-    margin-bottom: 10rem;
+  article:last-child {
+    margin-bottom: 20vh;
+  }
+  button {
+    color: #552d9e;
+    background: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: 1px solid #552d9e;
+    border-radius: 0.5vw;
+    padding: 0.5vw 3vw;
+    margin: 2vw auto;
+    transition: all 0.3s;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  button:hover {
+    background: #552d9e;
+    color: #fff;
   }
 }
 </style>
