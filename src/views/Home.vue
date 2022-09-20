@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- <div class="shadow"></div> -->
     <Nav />
     <div class="content">
       <KeyVision />
@@ -12,7 +13,11 @@
     </div>
     <Footer />
 
-    <InitialPopup />
+    <InitialModal />
+    <LoginModal />
+    <SignUpModal />
+    <ResetPasswordModal />
+    <LogoutModal />
   </div>
 </template>
 <script setup>
@@ -22,13 +27,25 @@ import Footer from '../components/Footer/index.vue';
 import KeyVision from '../components/Home/KeyVision/index.vue';
 import HistoryTable from '../components/Home/HistoryTable/index.vue';
 
-import InitialPopup from '../components/Home/Modals/InitialPopup.vue';
+import InitialModal from '../components/Home/Modals/Initial.vue';
+import LoginModal from '../components/Home/Modals/Login.vue';
+import SignUpModal from '../components/Home/Modals/SignUp.vue';
+import ResetPasswordModal from '../components/Home/Modals/ResetPassword.vue';
+import LogoutModal from '../components/Home/Modals/Logout.vue';
 </script>
 <style lang="scss" scoped>
 .home {
   background: #000;
   height: 100vh;
   overflow: scroll;
+  .shadow {
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 12;
+  }
   .content {
     width: 80%;
     margin: 0 auto;

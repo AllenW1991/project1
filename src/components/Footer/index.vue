@@ -25,7 +25,6 @@ import router from '../../router';
 
 function routerChange(target) {
   router.push(`/${target}`);
-  console.log('test');
 }
 </script>
 <style lang="scss" scoped>
