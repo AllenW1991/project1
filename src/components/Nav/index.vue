@@ -10,7 +10,9 @@
         <img src="../../assets/imgs/user_num_icon.png" alt="" />
         <span>15,782.7837</span>
       </div> -->
-      <button type="button">LOG IN</button>
+      <button type="button" @click="store.commit('CHANGE_MODAL', 'login')">
+        LOG IN
+      </button>
       <div class="user">
         <button type="button">test888</button>
         <div class="userInner">
@@ -26,7 +28,9 @@
     </div>
   </nav>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../store';
+</script>
 <style lang="scss" scoped>
 nav {
   display: flex;

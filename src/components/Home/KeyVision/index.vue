@@ -2,6 +2,11 @@
   <div class="keyVision">
     <div class="top">
       <ul class="percentage">
+        <img
+          src="../../../assets/imgs/time_arrow.png"
+          alt=""
+          class="arrowIcon"
+        />
         <li class="two">
           <span>200%</span>
           <span>200%</span>
@@ -9,6 +14,25 @@
         <li class="four">
           <span>400%</span>
           <span>400%</span>
+        </li>
+        <li class="eight">
+          <span>800%</span>
+          <span>800%</span>
+        </li>
+        <li class="ten">
+          <span>1000%</span>
+          <span>1000%</span>
+        </li>
+        <li class="twenty">
+          <span>2000%</span>
+          <span>2000%</span>
+        </li>
+        <li class="forty">
+          <span class="activeRate">4000%</span>
+          <span>4000%</span>
+        </li>
+        <li class="eighty">
+          <span>8000%</span>
         </li>
       </ul>
     </div>
@@ -78,6 +102,16 @@
     </div>
   </div>
 </template>
+<script>
+import { ref } from 'vue';
+
+let activedModal = ref('');
+
+function showModal(name) {
+  activedModal.value = name;
+}
+</script>
+
 <style lang="scss" scoped>
 .keyVision {
   position: relative;
@@ -88,28 +122,78 @@
   height: 70vh;
   .top {
     position: absolute;
-    bottom: 20%;
+    bottom: 6vw;
     width: 100%;
     left: 50%;
     transform: translate(-50%, 0%);
-    z-index: 20;
+    z-index: 6;
+    pointer-events: none;
+
+    li {
+      list-style: none;
+    }
 
     .percentage {
       width: 100%;
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
-      color: #747376;
+      font-size: 1.2vw;
+      position: relative;
+      .arrowIcon {
+        position: absolute;
+        width: 2vw;
+        top: 4.2vw;
+        left: 35.5%;
+        transform: rotate(150deg);
+      }
+      span {
+        color: #747376;
+        transition: all 0.3s;
+      }
+      .activeRate {
+        color: #fff;
+      }
       .two {
-        width: 70%;
+        width: 56vw;
         display: flex;
         justify-content: space-between;
       }
       .four {
         margin-bottom: 3%;
-        width: 67%;
+        width: 55vw;
         display: flex;
         justify-content: space-between;
+      }
+      .eight {
+        margin-bottom: 3%;
+        width: 52vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      .ten {
+        margin-bottom: 3.5%;
+        width: 48vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      .twenty {
+        margin-bottom: 3%;
+        width: 40vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      .forty {
+        margin-bottom: 2%;
+        width: 28vw;
+        display: flex;
+        justify-content: space-between;
+      }
+      .eighty {
+        margin-bottom: 0.5%;
+        width: 25vw;
+        display: flex;
+        justify-content: center;
       }
     }
   }
@@ -117,6 +201,7 @@
     width: 45vw;
     margin: 0 auto;
     position: relative;
+    z-index: 5;
     img {
       width: 100%;
     }
@@ -282,7 +367,7 @@
         z-index: 5;
       }
       li {
-        font-size: 0.1vw;
+        font-size: 1vw;
         font-weight: bold;
       }
     }
