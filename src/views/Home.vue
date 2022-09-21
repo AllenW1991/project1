@@ -46,6 +46,34 @@
           </ul>
         </div>
         <!-- games slider -->
+        <div class="sliders">
+          <swiper
+            :slidesPerView="4"
+            :spaceBetween="10"
+            :centeredSlides="true"
+            :navigation="true"
+            :loop="true"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <img src="../assets/imgs/card_frame.png" alt="" class="cardFrame" />
+            <swiper-slide>
+              <img src="../assets/imgs/gameSlideImgs/1.png" alt="" />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="../assets/imgs/gameSlideImgs/2.png" alt="" />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="../assets/imgs/gameSlideImgs/3.png" alt="" />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="../assets/imgs/gameSlideImgs/4.png" alt="" />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="../assets/imgs/gameSlideImgs/5.png" alt="" />
+            </swiper-slide>
+          </swiper>
+        </div>
       </div>
       <HistoryTable />
     </div>
@@ -66,6 +94,13 @@
   </div>
 </template>
 <script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import Nav from '../components/Nav/index.vue';
 import Footer from '../components/Footer/index.vue';
 
@@ -84,6 +119,8 @@ import WalletModal from '../components/Home/Modals/Wallet.vue';
 import CheckDepositModal from '../components/Home/Modals/CheckDeposit.vue';
 import DepositStep1Modal from '../components/Home/Modals/DepositStep1.vue';
 import DepositStep2Modal from '../components/Home/Modals/DepositStep2.vue';
+
+let modules = [Navigation, Mousewheel, Keyboard];
 </script>
 <style lang="scss" scoped>
 .home {
@@ -199,6 +236,44 @@ import DepositStep2Modal from '../components/Home/Modals/DepositStep2.vue';
             .bottom {
               font-size: 0.8rem;
             }
+          }
+        }
+      }
+    }
+    .sliders {
+      margin: 3rem 0;
+      position: relative;
+      height: 0;
+      opacity: 0;
+      z-index: -1;
+
+      .mySwiper {
+        width: 80%;
+        padding: 3rem 0;
+        background-image: url('../assets/imgs/page_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        .cardFrame {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 1%);
+          z-index: 5;
+          width: 13vw;
+        }
+        .swiper-slide {
+          width: 10vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          img {
+            width: 15vw;
+            object-fit: cover;
+            padding: 2rem;
+            box-sizing: border-box;
           }
         }
       }

@@ -1,6 +1,17 @@
 <template>
   <div class="keyVision">
-    <div class="top"></div>
+    <div class="top">
+      <ul class="percentage">
+        <li class="two">
+          <span>200%</span>
+          <span>200%</span>
+        </li>
+        <li class="four">
+          <span>400%</span>
+          <span>400%</span>
+        </li>
+      </ul>
+    </div>
     <div class="middle">
       <img src="../../../assets/imgs/time_halfcircle.png" alt="" />
       <img
@@ -75,6 +86,33 @@
   flex-direction: column;
   justify-content: end;
   height: 70vh;
+  .top {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 20;
+
+    .percentage {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      color: #747376;
+      .two {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .four {
+        margin-bottom: 3%;
+        width: 67%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
   .middle {
     width: 45vw;
     margin: 0 auto;
