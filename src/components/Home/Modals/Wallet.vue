@@ -1,34 +1,120 @@
 <template>
-  <div class="modal active">
+  <div class="modal">
     <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
     <div class="title">
       <h2>Wallet</h2>
     </div>
     <div class="container">
       <div class="inputArea">
-        <div class="account input">
-          <p>E-MAIL ADDRESS</p>
-          <input type="text" placeholder="please enter email" />
-        </div>
-        <div class="password input">
-          <p>PASSWORD</p>
-          <input type="password" placeholder="please enter password" />
-        </div>
-        <div class="other">
-          <div class="rememberUser">
-            <input type="checkbox" />
-            <p>Remember Me</p>
+        <div class="input">
+          <p>Wallet Balance</p>
+          <div class="wrap">
+            <div class="left">
+              <img src="../../../assets/imgs/usdt_icon.png" alt="" />
+              <span>18,273.7837</span>
+            </div>
+            <div class="right">
+              <button type="button">DEPOSIT</button>
+              <button type="button">WITHDRAW</button>
+            </div>
           </div>
-          <div class="forget">
-            <p>Forgot Password ?</p>
+        </div>
+        <div class="input">
+          <p>Transcation History</p>
+          <div class="switchBtns">
+            <button type="button" @click="getList('deposit')">DEPOSIT</button>
+            <button type="button" @click="getList('withdraw')">WITHDRAW</button>
           </div>
+          <ul class="depositList" v-if="activedList === 'deposit'">
+            <li>
+              <div class="date">DATE</div>
+              <div class="time">TIME</div>
+              <div class="amount">AMOUNT</div>
+              <div class="status">STATUS</div>
+            </li>
+            <li>
+              <div class="date">2022/09/01</div>
+              <div class="time">23:33:54</div>
+              <div class="amount">800 USDT</div>
+              <div class="status">SUCCESS</div>
+            </li>
+            <li>
+              <div class="date">2022/09/01</div>
+              <div class="time">23:33:54</div>
+              <div class="amount">800 USDT</div>
+              <div class="status">SUCCESS</div>
+            </li>
+            <li>
+              <div class="date">2022/09/01</div>
+              <div class="time">23:33:54</div>
+              <div class="amount">800 USDT</div>
+              <div class="status">SUCCESS</div>
+            </li>
+            <li>
+              <div class="date">2022/09/01</div>
+              <div class="time">23:33:54</div>
+              <div class="amount">800 USDT</div>
+              <div class="status">SUCCESS</div>
+            </li>
+            <li>
+              <div class="date">2022/09/01</div>
+              <div class="time">23:33:54</div>
+              <div class="amount">800 USDT</div>
+              <div class="status">SUCCESS</div>
+            </li>
+          </ul>
+
+          <ul class="withdrawList" v-if="activedList === 'withdraw'">
+            <li>
+              <div class="date">DATE</div>
+              <div class="time">TIME</div>
+              <div class="amount">AMOUNT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">30 USDT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">30 USDT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">30 USDT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">30 USDT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">30 USDT</div>
+            </li>
+            <li>
+              <div class="date">2022/09/02</div>
+              <div class="time">02:28:11</div>
+              <div class="amount">2,116.4333 USDT</div>
+            </li>
+          </ul>
         </div>
       </div>
       <button type="button">LOG IN</button>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+
+let activedList = ref('deposit');
+function getList(value) {
+  activedList.value = value;
+}
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
@@ -55,7 +141,7 @@
   .closeIcon {
     position: absolute;
     right: 0;
-    top: 15%;
+    top: 11%;
     color: gray;
     transition: all 0.3s;
     cursor: pointer;
@@ -67,7 +153,7 @@
 
   .container {
     background: #361717;
-    padding: 0 0.5rem;
+    padding: 2rem 0.5rem;
     width: 100%;
     text-align: center;
 
@@ -110,6 +196,101 @@
         width: 100%;
         p {
           margin: 0.5rem 0;
+        }
+        .wrap {
+          background: #371919;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5vw 1vw;
+          .left {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            img {
+              width: 15%;
+              margin-right: 1vw;
+            }
+          }
+          .right {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            button {
+              margin: 0;
+              padding: 0;
+              background: #452d2d;
+              box-sizing: border-box;
+              width: auto;
+              padding: 0.5vw 1vw;
+              margin: 0 0.5vw;
+            }
+            button:hover {
+              transform: scale(1);
+              background: #3e2323;
+              color: #776363;
+            }
+          }
+        }
+        .switchBtns {
+          button {
+            margin: 0;
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            padding: 0.5rem 0;
+            width: 25%;
+            box-sizing: border-box;
+            height: 5vh;
+          }
+          button:hover {
+            transform: scale(1);
+            border-bottom: 2px solid #fff;
+          }
+        }
+        .depositList {
+          height: 30vh;
+          overflow: scroll;
+
+          li {
+            margin: 0.5rem 0;
+            display: flex;
+            font-size: 1vw;
+            align-items: center;
+            justify-content: center;
+            .date {
+              flex: 0.2;
+            }
+            .time {
+              flex: 0.2;
+            }
+            .amount {
+              flex: 0.2;
+            }
+            .status {
+              flex: 0.2;
+            }
+          }
+        }
+        .withdrawList {
+          height: 30vh;
+          overflow: scroll;
+          li {
+            margin: 0.5rem 0;
+            display: flex;
+            font-size: 1vw;
+            align-items: center;
+            justify-content: center;
+            .date {
+              flex: 0.2;
+            }
+            .time {
+              flex: 0.2;
+            }
+            .amount {
+              flex: 0.3;
+            }
+          }
         }
       }
       .other {

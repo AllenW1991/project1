@@ -80,6 +80,8 @@
   .container {
     border-top: 2px solid #583373;
     color: #fff;
+    height: 50vh;
+    overflow: scroll;
     li {
       display: flex;
       text-align: center;
