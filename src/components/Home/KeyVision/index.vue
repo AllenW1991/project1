@@ -69,7 +69,10 @@
       </div>
     </div>
     <div class="bottom">
-      <img src="../../../assets/imgs/0000_cup_gold.png" class="gold" alt="" />
+      <div class="gold">
+        <span>2,000%</span>
+        <img src="../../../assets/imgs/0000_cup_gold.png" alt="" />
+      </div>
       <div class="timebarArrow">
         <img src="../../../assets/imgs/time_arrow.png" alt="" class="arrowUp" />
         <img
@@ -79,11 +82,11 @@
         />
       </div>
       <img src="../../../assets/imgs/time_bar.png" class="timebar" alt="" />
-      <img
-        src="../../../assets/imgs/0000_cup_silver.png"
-        class="silver"
-        alt=""
-      />
+      <div class="silver">
+        <span>2,000%</span>
+        <img src="../../../assets/imgs/0000_cup_silver.png" alt="" />
+      </div>
+
       <ul class="time">
         <li>02:00</li>
         <li>04:00</li>
@@ -320,16 +323,34 @@ function showModal(name) {
     .gold,
     .silver {
       width: 15vw;
+      span {
+        color: #fff;
+      }
+      img {
+        width: 100%;
+      }
     }
     .gold {
       position: absolute;
       left: 0;
       bottom: -0.5rem;
+      span {
+        position: absolute;
+        bottom: 1vw;
+        left: 10.2vw;
+        font-size: 1vw;
+      }
     }
     .silver {
       position: absolute;
       right: 0;
       bottom: -0.5rem;
+      span {
+        position: absolute;
+        bottom: 1vw;
+        right: 10.2vw;
+        font-size: 1vw;
+      }
     }
     .timebar {
       height: 4vw;
