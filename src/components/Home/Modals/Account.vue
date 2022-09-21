@@ -1,37 +1,36 @@
 <template>
-  <div class="modal active">
+  <div class="modal">
     <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
 
     <div class="container">
       <div class="subTitle">
         <p>My Account</p>
-        <p></p>
       </div>
       <div class="inputArea">
-        <div class="input">
-          <p>PROFILE</p>
+        <div class="account input">
+          <p>Profile</p>
           <div class="btnsTop">
             <button type="button">24H</button>
             <button type="button">ALL</button>
           </div>
-        </div>
-        <div class="btnsBottom">
-          <div class="input">
-            <button type="button">Bet</button>
-            <button type="button">0</button>
-          </div>
-          <div class="input">
-            <button type="button">Win</button>
-            <button type="button">0</button>
-          </div>
-          <div class="input">
-            <button type="button">Chips</button>
-            <button type="button">0</button>
-          </div>
-          <div class="input">
-            <button type="button">Profit</button>
-            <button type="button">0</button>
-          </div>
+          <ul class="btnsBottom">
+            <li>
+              <button type="button">Bet</button>
+              <button type="button">0</button>
+            </li>
+            <li>
+              <button type="button">Win</button>
+              <button type="button">0</button>
+            </li>
+            <li>
+              <button type="button">Chips</button>
+              <button type="button">0</button>
+            </li>
+            <li>
+              <button type="button">Profit</button>
+              <button type="button">0%</button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -64,7 +63,7 @@
   .closeIcon {
     position: absolute;
     right: 0;
-    top: 17%;
+    top: 0%;
     color: gray;
     transition: all 0.3s;
     cursor: pointer;
@@ -94,10 +93,6 @@
         color: #2258ca;
         border-bottom: 1px solid #2258ca;
       }
-      p:last-child {
-        text-align: left;
-        margin: 1rem 0;
-      }
     }
     .inputArea {
       background: #25100f;
@@ -106,8 +101,12 @@
       align-items: center;
       border-radius: 0.5rem;
       text-align: center;
-      padding-bottom: 2rem;
-      overflow: scroll;
+      padding: 0.5vw 1vw;
+      margin: 1vw 0;
+      li,
+      ul {
+        list-style: none;
+      }
       input {
         width: 100%;
         background: #371919;
@@ -126,85 +125,75 @@
           margin: 0.5rem 0;
         }
       }
-      .other {
-        margin: 1rem;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .rememberUser {
-          display: flex;
-          align-items: center;
-          p {
-            width: 100%;
-            white-space: nowrap;
-          }
-          input {
-            margin: 0 0.5vw;
-          }
-        }
-        .forget {
-          transition: all 0.3s;
-          cursor: pointer;
-          color: #5487f5;
-        }
-        .forget:hover {
-          color: #2258ca;
-        }
+      button {
+        background: #5c3535;
+        color: #fff;
+        border: none;
+        width: 50%;
+        border-radius: 0.25rem;
+        transition: all 0.3s;
+        cursor: pointer;
       }
-    }
-
-    button {
-      border: none;
-      background: #5c3535;
-      color: #fff;
-      transition: all 0.3s;
-      cursor: pointer;
-      padding: 0.5rem 2rem;
-      border-radius: 0.2rem;
-    }
-    button:hover {
-      color: gray;
-      background: #4d2a2a;
-    }
-    .btnsTop {
-      background: #371919;
-      margin: 0 auto;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      width: 50%;
-    }
-    .btnsBottom {
-      display: flex;
-      align-content: center;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-      .input {
-        width: 45%;
+      button:hover {
+        background: #4d2a2a;
+        color: #afa3a3;
+      }
+      .btnsTop {
         background: #371919;
+        width: 60%;
+        margin: 0 auto;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        margin: 2%;
-        padding: 2% 5%;
-        box-sizing: border-box;
+        align-items: center;
+        padding: 0.5rem;
         button {
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0;
-          width: 50%;
-          // margin: 0 0.2rem;
+          font-size: 1vw;
+          margin: 0 0.5vw;
+          padding: 0.5vw 0;
         }
-        button:last-child {
-          background: none;
+      }
+      .btnsBottom {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 2rem 0;
+        li {
+          width: 45%;
+          display: flex;
+          padding: 0.5vw;
+          margin: 0.2vw;
+          background: #371919;
+
+          button {
+            font-size: 1vw;
+            margin: 0 0.5vw;
+            padding: 1vw;
+          }
+          button:last-child {
+            background: none;
+          }
         }
       }
     }
+    // button {
+    //   margin: 1rem 0;
+    //   width: 15vw;
+    //   font-size: 1vw;
+    //   width: 30%;
+    //   background: #670d0d;
+    //   color: #fff;
+    //   border: none;
+    //   cursor: pointer;
+    //   border-radius: 0.2rem;
+    //   padding: 0.5rem 1rem;
+    //   transform: scale(1);
+    //   transition: all 0.3s;
+    // }
+    // button:hover {
+    //   transform: scale(1.1);
+    // }
   }
 }
 .active {

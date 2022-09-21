@@ -19,6 +19,9 @@
     <ResetPasswordModal />
     <LogoutModal />
     <AccountModal />
+    <SettingsModal />
+    <WithdrawModal />
+    <WalletModal />
   </div>
 </template>
 <script setup>
@@ -34,6 +37,9 @@ import SignUpModal from '../components/Home/Modals/SignUp.vue';
 import ResetPasswordModal from '../components/Home/Modals/ResetPassword.vue';
 import LogoutModal from '../components/Home/Modals/Logout.vue';
 import AccountModal from '../components/Home/Modals/Account.vue';
+import SettingsModal from '../components/Home/Modals/Settings.vue';
+import WithdrawModal from '../components/Home/Modals/Withdraw.vue';
+import WalletModal from '../components/Home/Modals/Wallet.vue';
 </script>
 <style lang="scss" scoped>
 .home {
