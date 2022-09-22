@@ -6,22 +6,48 @@
       <button type="button">GAME RULE</button>
     </div>
     <div class="right">
-      <!-- <div class="userNum">
+      <div class="userNum">
         <img src="../../assets/imgs/user_num_icon.png" alt="" />
         <span>15,782.7837</span>
-      </div> -->
-      <button type="button" @click="store.commit('CHANGE_MODAL', 'login')">
-        LOG IN
-      </button>
+      </div>
+      <div class="loggin">
+        <button type="button" @click="store.commit('CHANGE_MODAL', 'login')">
+          LOG IN
+        </button>
+      </div>
       <div class="user">
-        <button type="button">test888</button>
-        <div class="userInner">
-          <button type="button">Wallet</button>
-          <button type="button">Withdraw</button>
-          <button type="button">Deposit</button>
-          <button type="button">Settings</button>
-          <button type="button">Your Account</button>
-          <button type="button">Log Out</button>
+        <button type="button" @click="toggleShowInner">test888</button>
+        <div :class="['userInner', showInner ? 'activeInner' : null]">
+          <button type="button" @click="store.commit('CHANGE_MODAL', 'wallet')">
+            Wallet
+          </button>
+          <button
+            type="button"
+            @click="store.commit('CHANGE_MODAL', 'withdraw')"
+          >
+            Withdraw
+          </button>
+          <button
+            type="button"
+            @click="store.commit('CHANGE_MODAL', 'depositstep1')"
+          >
+            Deposit
+          </button>
+          <button
+            type="button"
+            @click="store.commit('CHANGE_MODAL', 'settings')"
+          >
+            Settings
+          </button>
+          <button
+            type="button"
+            @click="store.commit('CHANGE_MODAL', 'account')"
+          >
+            Your Account
+          </button>
+          <button type="button" @click="store.commit('CHANGE_MODAL', 'logout')">
+            Log Out
+          </button>
         </div>
       </div>
       <button type="button">CN</button>
@@ -29,7 +55,13 @@
   </nav>
 </template>
 <script setup>
-import store from '../../store';
+import { ref } from 'vue'
+import store from '../../store'
+
+let showInner = ref(false)
+function toggleShowInner() {
+  showInner.value = !showInner.value
+}
 </script>
 <style lang="scss" scoped>
 nav {
@@ -66,7 +98,9 @@ nav {
   .right {
     display: flex;
     justify-content: end;
-    width: 50vw;
+    div {
+      margin: 0 0.5vw;
+    }
     .userNum {
       border: 1px solid #fff;
       border-radius: 0.3vw;
@@ -85,7 +119,46 @@ nav {
     }
     .user {
       position: relative;
+
+      button {
+        box-sizing: border-box;
+        width: 8vw;
+      }
+
       .userInner {
+        position: absolute;
+        left: 0.45vw;
+        width: 8vw;
+        border-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        border-radius: 0 0 0.3vw 0.3vw;
+        z-index: 10;
+        transition: all 0.5s;
+        opacity: 0;
+        transform: translateY(-20%);
+        pointer-events: none;
+
+        button {
+          border: none;
+          margin: 0;
+          padding: 0.5vw 0;
+          border-radius: 0;
+        }
+      }
+      .activeInner {
+        opacity: 1;
+        transform: translateY(0%);
+        pointer-events: all;
+        border: 1px solid #552d9e;
+        border-top: 0;
+      }
+
+      /* .userInner {
         position: absolute;
         border: 1.3px solid #552d9e;
         border-radius: 0 0 0.3vw 0.3vw;
@@ -94,23 +167,20 @@ nav {
         align-items: center;
         z-index: 10;
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        left: 50%;
-        top: 1.8vw;
+        left: 0;
+        top: bottom;
         transform: translate(-50%, 0);
         button {
           border: 0;
           margin: 0;
-          padding: 0.2vw 0;
-          width: 100px;
+          padding: 0.5vw;
           border-radius: 0;
         }
         button:hover {
           background: #552d9e;
           color: #000;
         }
-      }
+      } */
     }
   }
 }

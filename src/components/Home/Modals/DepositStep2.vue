@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'depositstep2' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
 
     <div class="container">
       <div class="subTitle">
@@ -30,7 +37,11 @@
         </div>
       </div>
       <div class="btns">
-        <button type="button">CLAIM MY DEPOSIT</button
+        <button
+          type="button"
+          @click="store.commit('CHANGE_MODAL', 'checkdeposit')"
+        >
+          CLAIM MY DEPOSIT</button
         ><button type="button">COPY ADDRESS</button>
       </div>
       <p class="note">
@@ -40,7 +51,9 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;

@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'settings' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
 
     <div class="container">
       <div class="subTitle">
@@ -30,7 +37,9 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
@@ -57,7 +66,7 @@
   .closeIcon {
     position: absolute;
     right: 0;
-    top: 15%;
+    top: 0%;
     color: gray;
     transition: all 0.3s;
     cursor: pointer;

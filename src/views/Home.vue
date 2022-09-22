@@ -1,17 +1,41 @@
 <template>
   <div class="home">
-    <!-- <div class="shadow"></div> -->
+    <div
+      :class="[store.state.activatedModal !== '' ? 'shadow' : null]"
+      class="closeIcon"
+      @click="store.commit('CHANGE_MODAL', '')"
+    ></div>
     <Nav />
     <div class="content">
       <KeyVision />
       <div class="gameArea">
         <button type="button">
-          <!-- <img src="../assets/imgs/btn_BigWin.png" alt="" /> -->
-          <!-- <img src="../assets/imgs/btn_View my rewards.png" alt="" /> -->
-          <img src="../assets/imgs/btn_GoSlot.png" alt="" />
+          <img
+            src="../assets/imgs/btn_BigWin.png"
+            alt=""
+            v-if="currentShow === 'start'"
+            @click="changeCurrentShow('slider')"
+          />
+          <img
+            src="../assets/imgs/btn_View my rewards.png"
+            alt=""
+            v-if="currentShow === 'slider'"
+            @click="changeCurrentShow('rewardsHistory')"
+          />
+          <img
+            src="../assets/imgs/btn_GoSlot.png"
+            alt=""
+            v-if="currentShow === 'rewardsHistory'"
+            @click="changeCurrentShow('slider')"
+          />
         </button>
         <!-- max rewards -->
-        <div class="rewards">
+        <div
+          :class="[
+            'rewards',
+            currentShow === 'rewardsHistory' ? 'active' : null,
+          ]"
+        >
           <img src="../assets/imgs/rewardbox_bg.png" alt="" />
           <div class="title">
             <img src="../assets/imgs/rewardbox_title.png" alt="" />
@@ -46,7 +70,7 @@
           </ul>
         </div>
         <!-- games slider -->
-        <div class="sliders">
+        <div :class="['sliders', currentShow === 'slider' ? 'active' : null]">
           <swiper
             :slidesPerView="4"
             :spaceBetween="10"
@@ -94,33 +118,50 @@
   </div>
 </template>
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
+// swiper
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper'
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
-import Nav from '../components/Nav/index.vue';
-import Footer from '../components/Footer/index.vue';
+//home components
+import Nav from '../components/Nav/index.vue'
+import Footer from '../components/Footer/index.vue'
+import KeyVision from '../components/Home/KeyVision/index.vue'
+import HistoryTable from '../components/Home/HistoryTable/index.vue'
 
-import KeyVision from '../components/Home/KeyVision/index.vue';
-import HistoryTable from '../components/Home/HistoryTable/index.vue';
+//modals
+import InitialModal from '../components/Home/Modals/Initial.vue'
+import LoginModal from '../components/Home/Modals/Login.vue'
+import SignUpModal from '../components/Home/Modals/SignUp.vue'
+import ResetPasswordModal from '../components/Home/Modals/ResetPassword.vue'
+import LogoutModal from '../components/Home/Modals/Logout.vue'
+import AccountModal from '../components/Home/Modals/Account.vue'
+import SettingsModal from '../components/Home/Modals/Settings.vue'
+import WithdrawModal from '../components/Home/Modals/Withdraw.vue'
+import WalletModal from '../components/Home/Modals/Wallet.vue'
+import CheckDepositModal from '../components/Home/Modals/CheckDeposit.vue'
+import DepositStep1Modal from '../components/Home/Modals/DepositStep1.vue'
+import DepositStep2Modal from '../components/Home/Modals/DepositStep2.vue'
 
-import InitialModal from '../components/Home/Modals/Initial.vue';
-import LoginModal from '../components/Home/Modals/Login.vue';
-import SignUpModal from '../components/Home/Modals/SignUp.vue';
-import ResetPasswordModal from '../components/Home/Modals/ResetPassword.vue';
-import LogoutModal from '../components/Home/Modals/Logout.vue';
-import AccountModal from '../components/Home/Modals/Account.vue';
-import SettingsModal from '../components/Home/Modals/Settings.vue';
-import WithdrawModal from '../components/Home/Modals/Withdraw.vue';
-import WalletModal from '../components/Home/Modals/Wallet.vue';
-import CheckDepositModal from '../components/Home/Modals/CheckDeposit.vue';
-import DepositStep1Modal from '../components/Home/Modals/DepositStep1.vue';
-import DepositStep2Modal from '../components/Home/Modals/DepositStep2.vue';
+// tools
+import store from '../store'
+import { onMounted, ref } from 'vue'
 
-let modules = [Navigation, Mousewheel, Keyboard];
+//swiper config
+let modules = [Navigation, Mousewheel, Keyboard]
+
+//home current view
+let currentShow = ref('start')
+function changeCurrentShow(name) {
+  currentShow.value = name
+}
+
+onMounted(() => {
+  store.commit('CHANGE_MODAL', 'initial')
+})
 </script>
 <style lang="scss" scoped>
 .home {
@@ -187,7 +228,7 @@ let modules = [Navigation, Mousewheel, Keyboard];
       }
       .items {
         position: absolute;
-        bottom: 0;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -202,10 +243,10 @@ let modules = [Navigation, Mousewheel, Keyboard];
           width: 90%;
           box-sizing: border-box;
           text-align: center;
-          font-size: 1rem;
+          font-size: 1.5vw;
           margin-bottom: 0.5rem;
           p {
-            font-size: 1.5rem;
+            font-size: 2vw;
           }
           .time {
             flex: 0.2;
@@ -215,10 +256,10 @@ let modules = [Navigation, Mousewheel, Keyboard];
             }
           }
           .reward {
-            flex: 0.2;
+            flex: 0.25;
           }
           .acerageAPY {
-            flex: 0.2;
+            flex: 0.25;
           }
           .winner {
             flex: 0.3;
@@ -252,7 +293,7 @@ let modules = [Navigation, Mousewheel, Keyboard];
         padding: 3rem 0;
         background-image: url('../assets/imgs/page_bg.png');
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: 50% 15%;
         background-size: cover;
 
         .cardFrame {

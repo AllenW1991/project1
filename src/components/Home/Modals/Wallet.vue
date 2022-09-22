@@ -1,10 +1,17 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'wallet' ? 'active' : null,
+    ]"
+  >
     <div class="title">
       <h2>Wallet</h2>
     </div>
     <div class="container">
+      <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
       <div class="inputArea">
         <div class="input">
           <p>Wallet Balance</p>
@@ -22,8 +29,20 @@
         <div class="input">
           <p>Transcation History</p>
           <div class="switchBtns">
-            <button type="button" @click="getList('deposit')">DEPOSIT</button>
-            <button type="button" @click="getList('withdraw')">WITHDRAW</button>
+            <button
+              type="button"
+              @click="getList('deposit')"
+              :class="[activedList === 'deposit' ? 'activatedBtn' : null]"
+            >
+              DEPOSIT
+            </button>
+            <button
+              type="button"
+              @click="getList('withdraw')"
+              :class="[activedList === 'withdraw' ? 'activatedBtn' : null]"
+            >
+              WITHDRAW
+            </button>
           </div>
           <ul class="depositList" v-if="activedList === 'deposit'">
             <li>
@@ -103,16 +122,19 @@
           </ul>
         </div>
       </div>
-      <button type="button">LOG IN</button>
+      <button type="button" @click="store.commit('CHANGE_MODAL', '')">
+        BACK
+      </button>
     </div>
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import store from '../../../store'
 
-let activedList = ref('deposit');
+let activedList = ref('deposit')
 function getList(value) {
-  activedList.value = value;
+  activedList.value = value
 }
 </script>
 <style lang="scss" scoped>
@@ -140,8 +162,8 @@ function getList(value) {
   }
   .closeIcon {
     position: absolute;
-    right: 0;
-    top: 11%;
+    right: 0.5vw;
+    top: 0;
     color: gray;
     transition: all 0.3s;
     cursor: pointer;
@@ -156,6 +178,7 @@ function getList(value) {
     padding: 2rem 0.5rem;
     width: 100%;
     text-align: center;
+    position: relative;
 
     .subTitle {
       text-align: center;
@@ -242,9 +265,13 @@ function getList(value) {
             width: 25%;
             box-sizing: border-box;
             height: 5vh;
+            border-bottom: 2px solid rgba(0, 0, 0, 0);
           }
           button:hover {
             transform: scale(1);
+            border-bottom: 2px solid #fff;
+          }
+          .activatedBtn {
             border-bottom: 2px solid #fff;
           }
         }

@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'resetpassword' ? 'active' : null,
+    ]"
+  >
+    <span @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
     <div class="title">
       <h2>Password Reset</h2>
     </div>
@@ -22,7 +29,9 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;

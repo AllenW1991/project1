@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'withdraw' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
     <div class="container">
       <div class="subTitle">
         <p>WITHDRAW USDT</p>
@@ -51,7 +58,9 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
@@ -174,6 +183,7 @@
             font-size: 0.8rem;
             pointer-events: all;
             color: #fff;
+            margin-right: 1vw;
           }
         }
       }

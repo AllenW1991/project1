@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'depositstep1' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
 
     <div class="container">
       <div class="subTitle">
@@ -31,16 +38,22 @@
           </div>
         </div>
       </div>
-      <button type="button">NEXT STEP</button>
+      <button
+        type="button"
+        @click="store.commit('CHANGE_MODAL', 'depositstep2')"
+      >
+        NEXT STEP
+      </button>
     </div>
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import store from '../../../store'
 
-let activedBtn = ref('');
+let activedBtn = ref('')
 function changeBtn(target) {
-  activedBtn.value = target;
+  activedBtn.value = target
 }
 </script>
 <style lang="scss" scoped>

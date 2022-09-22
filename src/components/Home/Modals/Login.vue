@@ -39,13 +39,13 @@
   </div>
 </template>
 <script setup>
-import store from '../../../store';
+import store from '../../../store'
 </script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transition: all 0.3s;
   transform: translate(-50%, -50%);
   width: 35vw;

@@ -1,7 +1,12 @@
 <template>
-  <div class="initialPopup">
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'initial' ? 'active' : null,
+    ]"
+  >
     <div class="bg">
-      <div class="closeButton">
+      <div class="closeButton" @click="store.commit('CHANGE_MODAL', '')">
         <img src="../../../assets/imgs/popup_esc_btn.png" alt="" />
       </div>
       <img src="../../../assets/imgs/popup_bg.png" alt="" />
@@ -31,10 +36,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 
 <style lang="scss" scoped>
-.initialPopup {
+.modal {
   position: fixed;
   left: 50%;
   top: 50%;

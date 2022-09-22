@@ -105,15 +105,7 @@
     </div>
   </div>
 </template>
-<script>
-import { ref } from 'vue';
-
-let activedModal = ref('');
-
-function showModal(name) {
-  activedModal.value = name;
-}
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .keyVision {
@@ -122,7 +114,8 @@ function showModal(name) {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  height: 70vh;
+  margin: 10vw 0;
+  margin-bottom: 0vw;
   .top {
     position: absolute;
     bottom: 6vw;

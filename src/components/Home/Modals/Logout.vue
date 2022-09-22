@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'logout' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
     <div class="title">
       <h2>LOG OUT</h2>
     </div>
@@ -9,18 +16,24 @@
         <p>Are you sure you want to LOG OUT ?</p>
       </div>
       <div class="btns">
-        <button type="button">YES, LOG OUT</button>
-        <button type="button">NO</button>
+        <button type="button" @click="store.commit('CHANGE_MODAL', '')">
+          YES, LOG OUT
+        </button>
+        <button type="button" @click="store.commit('CHANGE_MODAL', '')">
+          NO
+        </button>
       </div>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transition: all 0.3s;
   transform: translate(-50%, -50%);
   width: 35vw;
@@ -42,7 +55,7 @@
   .closeIcon {
     position: absolute;
     right: 0;
-    top: 15%;
+    top: 35%;
     color: gray;
     transition: all 0.3s;
     cursor: pointer;

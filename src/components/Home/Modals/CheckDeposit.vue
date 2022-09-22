@@ -1,6 +1,13 @@
 <template>
-  <div class="modal">
-    <span class="closeIcon"> <i class="fa-solid fa-xmark"></i> </span>
+  <div
+    :class="[
+      'modal',
+      store.state.activatedModal === 'checkdeposit' ? 'active' : null,
+    ]"
+  >
+    <span class="closeIcon" @click="store.commit('CHANGE_MODAL', '')">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
     <div class="title">
       <h2>Check Your Deposit</h2>
     </div>
@@ -10,16 +17,20 @@
           <p>Please go to the wallet to confirm the payment status</p>
         </div>
       </div>
-      <button type="button">GO TO WALLET</button>
+      <button type="button" @click="store.commit('CHANGE_MODAL', 'wallet')">
+        GO TO WALLET
+      </button>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import store from '../../../store'
+</script>
 <style lang="scss" scoped>
 .modal {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transition: all 0.3s;
   transform: translate(-50%, -50%);
   width: 35vw;
